@@ -30,6 +30,7 @@ class EmployeePanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+        
             ->id('employee')
             ->path('employee')
             ->login()
