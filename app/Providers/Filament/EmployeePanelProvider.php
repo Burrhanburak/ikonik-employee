@@ -34,7 +34,7 @@ class EmployeePanelProvider extends PanelProvider
             ->path('employee')
             ->login()
             ->registration(Register::class)
-            ->domain('employee.employee.test')
+            // ->domain('employee.employee.test')
             ->authGuard('employee')
             ->brandName('İkon insan kaynakalrı çalışan paneli')
             ->brandLogo(asset('images/ikon-ik-logo.svg'))

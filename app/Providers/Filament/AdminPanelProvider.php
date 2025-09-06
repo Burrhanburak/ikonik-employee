@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->favicon(asset('images/ikon-ik-logo.svg'))
-            ->domain('admin.employee.test')
+            // ->domain('admin.employee.test')
             ->authGuard('admin')
             ->brandName('İkon insan kaynakalrı ')
              ->spa()
