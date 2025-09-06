@@ -1,19 +1,4 @@
-# Multi-stage build for Laravel with Vite
-FROM oven/bun:1-alpine AS node-build
-
-WORKDIR /app
-
-# Copy package files
-COPY package.json ./
-COPY bun.lock* ./
-
-# Install dependencies and build
-RUN rm -rf node_modules
-RUN bun install
-COPY . .
-RUN bun run build
-
-# PHP stage
+# Single stage build for Laravel with Vite
 FROM php:8.2-fpm-alpine
 
 # Install system dependencies
@@ -25,7 +10,9 @@ RUN apk add --no-cache \
     libxml2-dev \
     zip \
     unzip \
-    sqlite
+    sqlite \
+    nodejs \
+    npm
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
@@ -33,14 +20,21 @@ RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Install Bun
+RUN npm install -g bun
+
 WORKDIR /var/www
 
 # Copy application files
 COPY . .
-COPY --from=node-build /app/public/build ./public/build
 
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
+
+# Install JS dependencies and build
+RUN rm -rf node_modules
+RUN bun install
+RUN bun run build
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www
