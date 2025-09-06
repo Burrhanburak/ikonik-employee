@@ -12,6 +12,11 @@ class CheckinSeeder extends Seeder
 {
     public function run(): void
     {
+        // Sadece local ve testing ortamlarında test checkin verileri oluştur
+        if (!app()->environment('local', 'testing')) {
+            return;
+        }
+
         $employees = Employee::with('locations')->get();
         
         foreach ($employees as $employee) {
