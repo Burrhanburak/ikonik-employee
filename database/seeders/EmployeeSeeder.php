@@ -55,11 +55,17 @@ class EmployeeSeeder extends Seeder
         ];
 
         foreach ($employees as $employeeData) {
-            $employee = Employee::create($employeeData);
+            $employee = Employee::updateOrCreate(
+                ['email' => $employeeData['email']],
+                [
+                    'name' => $employeeData['name'],
+                    'password' => $employeeData['password'],
+                ]
+            );
             
             // Her çalışanı rastgele 2-4 lokasyona ata
             $locations = Location::inRandomOrder()->take(rand(2, 4))->get();
-            $employee->locations()->attach($locations);
+            $employee->locations()->sync($locations);
         }
     }
 }
