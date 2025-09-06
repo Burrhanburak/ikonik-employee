@@ -101,8 +101,8 @@ class Employee extends Authenticatable implements FilamentUser, MustVerifyEmail
     /**
      * Employee panel erişim kontrolü
      */
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return true; // Tüm employee kullanıcıları erişebilir
-    // }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true; // Tüm employee kullanıcıları erişebilir
+    }
 }

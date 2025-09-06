@@ -31,8 +31,8 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail
     }
 
 
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return true; // Tüm admin kullanıcıları erişebilir
-    // }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true; // Tüm admin kullanıcıları erişebilir
+    }
 }
