@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Filament\Panel;
-
-class Employee extends Authenticatable implements MustVerifyEmail
+use Filament\Models\Contracts\FilamentUser;
+class Employee extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -101,8 +101,8 @@ class Employee extends Authenticatable implements MustVerifyEmail
     /**
      * Employee panel erişim kontrolü
      */
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true; // Tüm employee kullanıcıları erişebilir
-    }
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return true; // Tüm employee kullanıcıları erişebilir
+    // }
 }

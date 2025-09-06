@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Filament\Panel;
-
-class Admin extends Authenticatable implements MustVerifyEmail
+use Filament\Models\Contracts\FilamentUser;
+class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -31,8 +31,8 @@ class Admin extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true; // Tüm admin kullanıcıları erişebilir
-    }
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return true; // Tüm admin kullanıcıları erişebilir
+    // }
 }
