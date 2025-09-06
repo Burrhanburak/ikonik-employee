@@ -34,14 +34,12 @@ class EmployeePanelProvider extends PanelProvider
             ->path('employee')
             ->login()
             ->registration(Register::class)
-            // ->domain('employee.employee.test')
+            //
             ->authGuard('employee')
             ->brandName('İkon insan kaynakalrı çalışan paneli')
             ->brandLogo(asset('images/ikon-ik-logo.svg'))
             ->brandLogoHeight('3rem')
             ->passwordReset()
-            ->emailVerification()
-            ->emailChangeVerification()
             ->authPasswordBroker('employees')
             ->colors([
                 'primary' => Color::Orange,

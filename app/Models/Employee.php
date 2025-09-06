@@ -7,8 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class Employee extends Authenticatable
+class Employee extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
 
@@ -93,5 +94,15 @@ class Employee extends Authenticatable
     public function getCheckinsCountAttribute()
     {
         return $this->checkins()->count();
+    }
+
+    /**
+     * Employee panel erişim kontrolü
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@company.com') || 
+               str_ends_with($this->email, '@gmail.com') || 
+               str_ends_with($this->email, '@employee.com');
     }
 }
