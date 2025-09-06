@@ -1,0 +1,31 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+.fi-body {
+    background-color: #ffffff !important;
+}
+
+body {
+    background-color: #ffffff !important;
+}
+
+
+ 
+.fi-simple-layout { 
+    @apply bg-white;
+}
+ 
+.fi-simple-main {
+    @apply bg-white;
+} 
+
+.fi-simple-main {
+    margin-block: calc(var(--spacing) * 16);
+    width: 100%;
+    background-color: var(--color-white);
+    padding-inline: calc(var(--spacing) * 6);
+    padding-block: calc(var(--spacing) * 12);
+    box-shadow: none !important; /* tüm shadow’ları iptal eder */
+}

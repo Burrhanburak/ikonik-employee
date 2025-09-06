@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../app/Filament/**/*.php';
+@source '../../vendor/filament/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+/* Override Filament CSS variables */
+
+/* Employee Panel Styles */
+.fi-body {
+    background-color: #ffffff !important;
+}
+
+body {
+    background-color: #ffffff !important;
+}
+
+.fi-simple-layout { 
+    @apply bg-white;
+}
+
+.fi-simple-main {
+    @apply bg-white;
+    margin-block: calc(var(--spacing) * 16);
+    width: 100%;
+    background-color: var(--color-white);
+    padding-inline: calc(var(--spacing) * 6);
+    padding-block: calc(var(--spacing) * 12);
+    box-shadow: none !important;
+}
+
