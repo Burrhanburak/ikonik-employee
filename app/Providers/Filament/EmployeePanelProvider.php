@@ -31,7 +31,7 @@ class EmployeePanelProvider extends PanelProvider
     {
         return $panel
             ->id('employee')
-            ->path('/')
+            ->path('employee')
             ->login()
             ->registration(Register::class)
             ->domain('employee.employee.test')
