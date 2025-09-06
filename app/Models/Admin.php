@@ -31,6 +31,6 @@ class Admin extends Authenticatable implements MustVerifyEmail
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@example.com');
+        return true; // Tüm admin kullanıcıları erişebilir
     }
 }

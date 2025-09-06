@@ -101,8 +101,6 @@ class Employee extends Authenticatable implements MustVerifyEmail
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@company.com') || 
-               str_ends_with($this->email, '@gmail.com') || 
-               str_ends_with($this->email, '@employee.com');
+        return true; // Tüm employee kullanıcıları erişebilir
     }
 }
