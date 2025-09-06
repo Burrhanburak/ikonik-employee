@@ -5,10 +5,10 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json ./
-COPY bun.lockb ./
+COPY bun.lock* ./
 
 # Install dependencies and build
-RUN rm -rf node_modules bun.lockb
+RUN rm -rf node_modules
 RUN bun install
 COPY . .
 RUN bun run build
